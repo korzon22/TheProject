@@ -6,6 +6,8 @@ package pageObjects;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class MobileLocators extends Locators{
 
@@ -27,11 +29,22 @@ public class MobileLocators extends Locators{
         return element;
     }
     public static WebElement betslipButton(WebDriver driver){
-        element = driver.findElement(By.className("toolbar__icon icon-bet-slip"));
+        element = driver
+                .findElement(By.id("toolbar"))
+                .findElement(By.cssSelector("span[class='toolbar__icon icon-bet-slip']"));
         return element;
     }
 
+    public static WebElement bettingWindow(WebDriver driver) {
+        element = driver
+                .findElement(By.id("bets-container-singles"))
+                .findElement(By.cssSelector("span[class='betslip-selection__input-container ng-untouched ng-valid ng-dirty ng-valid-parse']"));
 
+        return element;
+    }
 
-
+    public static WebElement currentOdds(WebDriver driver){
+        element = driver.findElement(((By.cssSelector("span[class='betslip-selection__price']"))));
+        return element;
+    }
 }
